@@ -54,10 +54,10 @@
             </ul>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-            <h2 class="sub-header">提交邮件</h2>
+            <h2 class="sub-header">设置提醒日期</h2>
             <form class="form-horizontal" method="post" th:object="${mail}" th:action="@{/mail/input/{id}(id=*{id})}" style="width: 60%" action="#">
                 <div class="form-group">
-                    <h2 class="form-signin-heading">邮件提交</h2>
+                    <h2 class="form-signin-heading">日期提交</h2>
                     <label for="id" class="sr-only" >id</label>
                     <input type="hidden" id="id" name="id" th:value="*{id}" class="form-control">
 

@@ -48,12 +48,12 @@
 
                     <h2 class="sub-header">任务详情</h2>
                     <div>
-                        <a th:href="@{/task/unfinished}" class="btn">未完成任务</a>
+                        <div  th:text = "'共有' + ${page.totalElements} + '项任务'"></div>
 
-                        <a th:href="@{/task/finished}" class="btn">已完成任务</a>
+
+                        <div style="float : right"><a th:href="@{/task/input}" class="btn btn-success">新建</a></div>
+
                     </div>
-
-                    <div style="float : right"><a th:href="@{/task/input}" class="btn btn-success">新建</a></div>
 
 
                     <div class="table-responsive">

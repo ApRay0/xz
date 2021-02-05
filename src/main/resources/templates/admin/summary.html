@@ -47,7 +47,12 @@
 
 
                     <h2 class="sub-header">任务总览</h2>
-
+                    <div>
+                        <div  th:text = "'共有' + ${page.totalElements} + '项任务'"></div>
+                        <a th:href="@{/admin/summary}" class="btn">所有任务</a>
+                        <a th:href="@{/task/unfinished}" class="btn">未完成任务</a>
+                        <a th:href="@{/task/finished}" class="btn">已完成任务</a>
+                    </div>
 
 
                     <div class="table-responsive">
@@ -65,7 +70,6 @@
                             <tr th:each="task, iterStat: ${page.content}" th:style="${task.finished} == 1? 'color:red' : 'color:green'">
                                 <td th:text="${iterStat.count}"></td>
 
-
                                 <td th:text="${task.name}"></td>
                                 <td th:text="${task.create_time}"></td>
                                 <td th:text="${task.end_time}"></td>
@@ -74,17 +78,17 @@
 
                             </tr>
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th colspan="5">
-                                        <div class="pager">
-                                            <li><a th:href="@{/task(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a></li>
-                                            <li><a th:href="@{/task(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a></li>
-                                        </div>
-                                    </th>
-                                </tr>
-                            </tfoot>
                         </table>
+                        <div class="pager">
+                            <p>
+                                当前<span th:text="${page.number + 1}"></span>页,
+                                共<span th:text="${page.totalPages}"></span>页
+                                <a th:href="@{/admin/summary(page=0)}" class="item">首页</a></li>
+                                <a th:href="@{/admin/summary(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a></li>
+                                <a th:href="@{/admin/summary(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a></li>
+                                <a th:href="@{/admin/summary(page=${page.totalPages - 1})}" class="item">尾页</a></li>
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

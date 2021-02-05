@@ -47,7 +47,12 @@
 
 
                     <h2 class="sub-header">任务总览</h2>
-
+                    <div>
+                        <div  th:text = "'共有' + ${page.totalElements} + '项任务'"></div>
+                        <a th:href="@{/summary}" class="btn">所有任务</a>
+                        <a th:href="@{/task/unfinished}" class="btn">未完成任务</a>
+                        <a th:href="@{/task/finished}" class="btn">已完成任务</a>
+                    </div>
 
 
                     <div class="table-responsive">

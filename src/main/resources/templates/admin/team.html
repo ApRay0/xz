@@ -83,14 +83,19 @@
                             <a href="#" th:href="@{/admin/team/delete/{id}(id=${team.id})}" class="btn btn-danger ">删除</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td></td>
-                    </tr>
                     </tbody>
                 </table>
                 <div class="pager">
-                    <li><a th:href="@{/admin/team(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a></li>
-                    <li><a th:href="@{/admin/team(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a></li>
+                    <p>
+                        当前<span th:text="${page.number + 1}"></span>页,
+                        共<span th:text="${page.totalPages}"></span>页
+                        <a th:href="@{/admin/team(page=0)}" class="item">首页</a></li>
+
+                        <a th:href="@{/admin/team(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a></li>
+                        <a th:href="@{/admin/team(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a></li>
+                        <a th:href="@{/admin/team(page=${page.totalPages - 1})}" class="item">尾页</a></li>
+
+                    </p>
                 </div>
             </div>
         </div>

@@ -63,6 +63,9 @@
                 <p th:text="${fail}"></p>
             </div>
             <h2 class="sub-header">用户总览</h2>
+            <div>
+                <div th:text = "'共有' + ${page.totalElements} + '位用户'"></div>
+            </div>
             <div class="table-responsive">
                 <table class="table table-striped">
                     <thead>
@@ -92,8 +95,14 @@
                     </tbody>
                 </table>
                 <div class="pager">
-                    <li><a th:href="@{/admin/team(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a></li>
-                    <li><a th:href="@{/admin/team(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a></li>
+                    <p>
+                        当前<span th:text="${page.number + 1}"></span>页,
+                        共<span th:text="${page.totalPages}"></span>页
+                        <a th:href="@{/admin/(page=0)}" class="item">首页</a></li>
+                        <a th:href="@{/admin/(page=${page.number} - 1)}" class="item" th:unless="${page.first}">上一页</a></li>
+                        <a th:href="@{/admin/(page=${page.number} + 1)}" class="item" th:unless="${page.last}">下一页</a></li>
+                        <a th:href="@{/admin/(page=${page.totalPages - 1})}" class="item">尾页</a></li>
+                    </p>
                 </div>
             </div>
         </div>
